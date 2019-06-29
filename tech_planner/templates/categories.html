@@ -28,24 +28,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>CPU</td>
-                <td>
-                    <button type="button" class="btn btn-outline-primary"><i class="far fa-edit"></i></button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>PSU</td>
-                <td>
-                    <button type="button" class="btn btn-outline-primary"><i class="far fa-edit"></i></button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
-                </td>
-            </tr>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary"><i class="far fa-edit"></i></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+
+            {% endfor %}
         </tbody>
     </table>
 
