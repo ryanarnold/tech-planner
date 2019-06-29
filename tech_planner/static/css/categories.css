@@ -1,0 +1,20 @@
+
+#col-name {
+    width: 50%;
+}
+
+#col-category {
+    width: 20%;
+}
+
+#col-price {
+    width: 15%;
+}
+
+#col-edit {
+    width: 7.5%;
+}
+
+#col-delete {
+    width: 7.5%;
+}
