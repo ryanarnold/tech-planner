@@ -9,7 +9,7 @@ class Category(Model):
 class Product(Model):
     name = CharField(max_length=500)
     category = ForeignKey(Category, on_delete=CASCADE)
-    price = DecimalField(max_digits=6, decimal_places=2)
+    price = DecimalField(max_digits=9, decimal_places=2)
 
 
 class Build(Model):
