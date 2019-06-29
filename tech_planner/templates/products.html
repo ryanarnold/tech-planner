@@ -1,7 +1,41 @@
 {% extends "base.html" %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{{ static('css/products.css') }}" >
+{% endblock styles %}
+
 {% block content %}
 
     <h1>Products</h1>
+
+    <button type="button" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add</button>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col" id="col-name">Name</th>
+            <th scope="col" id="col-category">Category</th>
+            <th scope="col" id="col-price">Price</th>
+            <th scope="col" id="col-edit"></th>
+            <th scope="col" id="col-delete"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>AMD Ryzen 3 1200</td>
+                <td>CPU</td>
+                <td>₱5,800</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary"><i class="far fa-edit"></i></button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                </td>
+            </tr>
+            <tr>
+                
+            </tr>
+        </tbody>
+    </table>
 
 {% endblock %}
