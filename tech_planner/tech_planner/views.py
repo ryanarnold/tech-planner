@@ -23,7 +23,27 @@ def index(request):
 
 
 def builds(request):
-    return render(request, BUILDS_HTML)
+    if request.method == HTTP_POST:
+        build_name = request.POST.get('name')
+
+        Build.objects.create(
+            name=build_name
+        )
+
+        return HttpResponseRedirect(reverse(BUILDS_URL))
+    
+    builds = Build.objects.order_by('name')
+
+    context = {
+        'builds': builds
+    }
+
+    return render(request, BUILDS_HTML, context)
+
+
+def build_delete(request, build_id):
+    Build.objects.get(id=build_id).delete()
+    return HttpResponseRedirect(reverse(BUILDS_URL))
 
 
 def products(request):
