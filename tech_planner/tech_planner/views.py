@@ -46,3 +46,8 @@ def categories(request):
     }
     
     return render(request, CATEGORIES_HTML, context)
+
+
+def category_delete(request, category_id):
+    Category.objects.filter(id=category_id).delete()
+    return HttpResponseRedirect(reverse(CATEGORIES_URL))
