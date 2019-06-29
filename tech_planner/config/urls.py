@@ -22,8 +22,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('builds/', views.builds, name='builds'),
     path('build-delete/<int:build_id>/', views.build_delete, name='build_delete'),
+    path('build-product-delete/<int:build_id>/<int:product_id>/', views.build_product_delete, name='build_product_delete'),
+    path('build-edit/<int:build_id>/', views.build_edit, name='build_edit'),
     path('categories/', views.categories, name='categories'),
     path('category-delete/<int:category_id>/', views.category_delete, name='category_delete'),
     path('products/', views.products, name='products'),
     path('product-delete/<int:product_id>/', views.product_delete, name='product_delete'),
+    path('get-products-using-category/<int:category_id>/', views.get_products, name='get-products'),
 ]

@@ -42,7 +42,9 @@
                 <tbody>
                     {% for build in builds %}
                         <tr>
-                            <td>{{ build.name }}</td>
+                            <td>
+                                <a href="{{ url('build_edit', args=(build.id,)) }}">{{ build.name }}</a>
+                            </td>
                             <td>
                                 <a href="{{ url('build_delete', args=(build.id,)) }}" class="btn btn-outline-danger" role="button" aria-pressed="true"><i class="far fa-trash-alt"></i></a>
                             </td>
