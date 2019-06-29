@@ -39,7 +39,7 @@ def categories(request):
 
         return HttpResponseRedirect(reverse(CATEGORIES_URL))
 
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('name')
 
     context = {
         'categories': categories
