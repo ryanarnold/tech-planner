@@ -18,3 +18,11 @@
 #col-delete {
     width: 7.5%;
 }
+
+.form-group {
+    margin-right: 10px;
+}
+
+form {
+    margin-bottom: 50px;
+}
