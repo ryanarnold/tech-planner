@@ -19,6 +19,7 @@
 
 ### build_product
 
-- build_id (pk) (fk)
-- product_id (pk) (fk)
+- build_product_id (pk)
+- build_id (fk)
+- product_id (fk)
 - status_cd
