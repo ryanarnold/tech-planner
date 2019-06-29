@@ -52,17 +52,17 @@
     <table class="table table-hover table-sm">
         <thead>
             <tr>
-            <th scope="col" id="col-name">Name</th>
-            <th scope="col" id="col-category">Category</th>
-            <th scope="col" id="col-price">Price</th>
-            <th scope="col" id="col-delete"></th>
+                <th scope="col" id="col-category">Category</th>
+                <th scope="col" id="col-name">Name</th>
+                <th scope="col" id="col-price">Price</th>
+                <th scope="col" id="col-delete"></th>
             </tr>
         </thead>
         <tbody>
             {% for product in build_products %}
                 <tr>
-                    <td>{{ product.product.name }}</td>
                     <td>{{ product.product.category.name }}</td>
+                    <td>{{ product.product.name }}</td>
                     <td>&#8369; {{ product.product.price }}</td>
                     <td>
                         <a href="{{ url('build_product_delete', args=(build.id, product.product.id)) }}" >delete</a>
