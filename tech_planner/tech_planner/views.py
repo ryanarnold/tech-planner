@@ -59,7 +59,6 @@ def build_edit(request, build_id):
         return HttpResponseRedirect(reverse(BUILD_EDIT_URL, args=(build_id,)))
 
     categories = Category.objects.order_by('name')
-    products = Product.objects.order_by('name')
     build_products = BuildProduct.objects.filter(build=build)
     build_products = build_products.order_by('product__category__name', 'product__name')
 
@@ -70,7 +69,6 @@ def build_edit(request, build_id):
     context = {
         'build': build,
         'categories': categories,
-        'products': products,
         'build_products': build_products,
         'total_price': total_price
     }
