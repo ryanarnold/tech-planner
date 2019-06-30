@@ -8,7 +8,7 @@
 
 {% block content %}
 
-  <h1>Builds</h1>
+  <h1 id="page-heading">Builds</h1>
 
   <p>Add a build:</p>
 
@@ -33,12 +33,12 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
       <table class="table table-hover table-sm">
         <thead>
           <tr>
-          <th scope="col" id="col-name">Name</th>
-          <th scope="col" id="col-delete"></th>
+            <th class="table-col-100" scope="col">Name</th>
+            <th class="table-col-10" scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -58,7 +58,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-6"></div>
   </div>
 
 {% endblock %}

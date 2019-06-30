@@ -9,7 +9,7 @@
 
 {% block content %}
 
-  <h1>Build: {{ build.name }}</h1>
+  <h1 id="page-heading">Build: {{ build.name }}</h1>
 
   <p>Add a product:</p>
 
@@ -54,10 +54,10 @@
   <table class="table table-hover table-sm">
     <thead>
       <tr>
-        <th scope="col" id="col-category">Category</th>
-        <th scope="col" id="col-name">Name</th>
-        <th scope="col" id="col-price" class="price">Price</th>
-        <th scope="col" id="col-delete"></th>
+        <th class="table-col-10" scope="col" id="col-category">Category</th>
+        <th class="table-col-" scope="col" id="col-name">Name</th>
+        <th class="table-col-25 text-right" scope="col" id="col-price">Price</th>
+        <th class="table-col-10" scope="col" id="col-delete"></th>
       </tr>
     </thead>
     <tbody>
@@ -68,9 +68,9 @@
           <td>{{ build_product.product.name }}</td>
 
           {% if build_product.product.price == '--'  %}
-            <td class="price">--</td>
+            <td class="text-right">--</td>
           {% else %}
-            <td class="price">&#8369; {{ build_product.product.price }}</td>
+            <td class="text-right">&#8369; {{ build_product.product.price }}</td>
           {% endif %}
           
           <td>

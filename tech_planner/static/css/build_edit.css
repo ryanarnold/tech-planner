@@ -1,8 +1,8 @@
 
-#total-price span {
-    font-weight: bold;
+#total-price {
+    margin-top: 40px;
 }
 
-.price {
-    text-align: right;
+#total-price span {
+    font-weight: bold;
 }

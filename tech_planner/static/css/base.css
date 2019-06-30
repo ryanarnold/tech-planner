@@ -9,14 +9,31 @@
     text-align: center;
 }
 
-#content {
+#page-heading {
     margin-top: 40px;
-}
-
-#content h1 {
     margin-bottom: 40px;
 }
 
 .table {
-    margin-top: 20px;
+    margin-top: 50px;
+}
+
+.table-col-100 {
+    width: 100%;
+}
+
+.table-col-50 {
+    width: 50;
+}
+
+.table-col-25 {
+    width: 25%;
+}
+
+.table-col-10 {
+    width: 10%;
+}
+
+.table td {
+    padding: 10px;
 }
