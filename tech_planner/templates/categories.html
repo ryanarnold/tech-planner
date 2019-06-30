@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
+
 {% block styles %}
   <link rel="stylesheet" href="{{ static('css/categories.css') }}" >
 {% endblock styles %}
+
 
 {% block content %}
 
@@ -29,6 +31,7 @@
           </tr>
         </thead>
         <tbody>
+          
           {% for category in categories %}
             <tr>
               <td>{{ category.name }}</td>
@@ -36,13 +39,12 @@
                 <a href="{{ url('category_delete', args=(category.id,)) }}" >delete</a>
               </td>
             </tr>
-    
           {% endfor %}
+
         </tbody>
       </table>
     </div>
     <div class="col-md-6"></div>
   </div>
-
 
 {% endblock %}

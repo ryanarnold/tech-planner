@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
+
 {% block styles %}
   <link rel="stylesheet" href="{{ static('css/products.css') }}" >
   <link rel="stylesheet" href="{{ static('css/build_edit.css') }}" >
 {% endblock styles %}
+
 
 {% block content %}
 
@@ -59,25 +61,29 @@
       </tr>
     </thead>
     <tbody>
+
       {% for build_product in build_products %}
         <tr>
           <td>{{ build_product.product.category.name }}</td>
           <td>{{ build_product.product.name }}</td>
+
           {% if build_product.product.price == '--'  %}
             <td class="price">--</td>
           {% else %}
             <td class="price">&#8369; {{ build_product.product.price }}</td>
           {% endif %}
+          
           <td>
             <a href="{{ url('build_product_delete', args=(build_product.id,)) }}" >delete</a>
           </td>
         </tr>
-
       {% endfor %}
+
     </tbody>
   </table>
 
 {% endblock %}
+
 
 {% block scripts %}
   <script src="{{ static('js/build_edit.js') }}"></script>
