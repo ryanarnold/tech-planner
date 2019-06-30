@@ -1,8 +1,8 @@
-from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
+from .common import format_as_currency
 from .models import Category, Product, Build, BuildProduct
 
 # Misc Constants
@@ -19,6 +19,7 @@ BUILDS_HTML = 'builds.html'
 BUILD_EDIT_HTML = 'build_edit.html'
 PRODUCTS_HTML = 'products.html'
 CATEGORIES_HTML = 'categories.html'
+
 
 def index(request):
     return HttpResponseRedirect(reverse(BUILDS_URL))
@@ -63,7 +64,7 @@ def build_edit(request, build_id):
 
     # Get total price
     total_price = sum([x.product.price for x in build_products])
-    total_price = '{:,.2f}'.format(total_price)
+    total_price = format_as_currency(total_price)
 
     context = {
         'build': build,
@@ -73,36 +74,36 @@ def build_edit(request, build_id):
         'total_price': total_price
     }
     
-    # Format prices
-    for product in build_products:
-        product.product.price = '{:,.2f}'.format(product.product.price)
-
+    for build_product in build_products:
+        build_product.product.price = format_as_currency(
+            build_product.product.price)
 
     return render(request, BUILD_EDIT_HTML, context)
 
 
-def build_product_delete(request, build_id, product_id):
-    build = Build.objects.get(id=build_id)
-    product = Product.objects.get(id=product_id)
+def build_product_delete(request, build_product_id):
+    build_product = BuildProduct.objects.get(id=build_product_id)
+    build_id = build_product.build.id
+    build_product.delete()
 
-    BuildProduct.objects.get(build=build, product=product).delete()
     return HttpResponseRedirect(reverse(BUILD_EDIT_URL, args=(build_id,)))
 
 
 def build_delete(request, build_id):
     Build.objects.get(id=build_id).delete()
+
     return HttpResponseRedirect(reverse(BUILDS_URL))
 
 
 def products(request):
     if request.method == HTTP_POST:
         product_name = request.POST.get('name')
-        category_id = request.POST.get('category')
+        category = Category.objects.get(id=request.POST.get('category'))
         price = request.POST.get('price')
 
         Product.objects.create(
             name=product_name,
-            category=Category.objects.get(id=category_id),
+            category=category,
             price=price
         )
 
@@ -116,16 +117,15 @@ def products(request):
         'categories': categories
     }
 
-    # Format prices
     for product in products:
-        product.price = '{:,.2f}'.format(product.price)
-    
+        product.price = format_as_currency(product.price)
 
     return render(request, PRODUCTS_HTML, context)
 
 
 def product_delete(request, product_id):
     Product.objects.filter(id=product_id).delete()
+    
     return HttpResponseRedirect(reverse(PRODUCTS_URL))
 
 
@@ -150,6 +150,7 @@ def categories(request):
 
 def category_delete(request, category_id):
     Category.objects.filter(id=category_id).delete()
+
     return HttpResponseRedirect(reverse(CATEGORIES_URL))
 
 
@@ -157,6 +158,12 @@ def get_products(request, category_id):
     category = Category.objects.get(id=category_id)
     products = Product.objects.filter(category=category).order_by('name')
 
-    products_json = [{'id': product.id, 'name': product.name} for product in products]
+    products_json = [
+        {
+            'id': product.id,
+            'name': product.name
+        } 
+        for product in products
+    ]
 
     return JsonResponse(products_json, safe=False)

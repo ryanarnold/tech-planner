@@ -59,13 +59,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for product in build_products %}
+            {% for build_product in build_products %}
                 <tr>
-                    <td>{{ product.product.category.name }}</td>
-                    <td>{{ product.product.name }}</td>
-                    <td class="price">&#8369; {{ product.product.price }}</td>
+                    <td>{{ build_product.product.category.name }}</td>
+                    <td>{{ build_product.product.name }}</td>
+                    <td class="price">&#8369; {{ build_product.product.price }}</td>
                     <td>
-                        <a href="{{ url('build_product_delete', args=(build.id, product.product.id)) }}" >delete</a>
+                        <a href="{{ url('build_product_delete', args=(build_product.id,)) }}" >delete</a>
                     </td>
                 </tr>
 
