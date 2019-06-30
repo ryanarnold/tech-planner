@@ -85,6 +85,18 @@ def build_edit(request, build_id):
     return render(request, BUILD_EDIT_HTML, context)
 
 
+def build_edit_name(request, build_id):
+    if request.method == HTTP_POST:
+        new_build_name = request.POST.get('name')
+
+        build = Build.objects.get(id=build_id)
+        build.name = new_build_name
+
+        build.save()
+
+        return HttpResponseRedirect(reverse(BUILD_EDIT_URL, args=(build_id,)))
+
+
 def build_product_delete(request, build_product_id):
     build_product = BuildProduct.objects.get(id=build_product_id)
     build_id = build_product.build.id

@@ -9,12 +9,31 @@
 
 {% block content %}
 
-  <h1 id="page-heading">Build: {{ build.name }}</h1>
+  <h1 id="page-heading">{{ build.name }}</h1>
 
-  <p>Add a product:</p>
+  <p>Edit build details:</p>
+  <div class="row" id="form-build-name">
+    <div class="col-md-6">
+      <form class="form-inline" action="{{ url('build_edit_name', args=(build.id,)) }}" method="POST">
+          <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label for="input-build-name" class="input-group-text">Build Name</label>
+              </div>
+              <input class="form-control" type="text" value="{{ build.name }}" name="name" id="input-build-name">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-success">Save</button>
+      </form>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-md-8">
+      <p>Add a product:</p>
       <form action="{{ url('build_edit', args=(build.id,))}}" method="POST">
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     
@@ -55,7 +74,7 @@
     <thead>
       <tr>
         <th class="table-col-10" scope="col" id="col-category">Category</th>
-        <th class="table-col-" scope="col" id="col-name">Name</th>
+        <th class="table-col-50" scope="col" id="col-name">Name</th>
         <th class="table-col-25 text-right" scope="col" id="col-price">Price</th>
         <th class="table-col-10" scope="col" id="col-delete"></th>
       </tr>

@@ -26,6 +26,7 @@ urlpatterns = [
     path('build-delete/<int:build_id>/', views.build_delete, name='build_delete'),
     path('build-product-delete/<int:build_product_id>/', views.build_product_delete, name='build_product_delete'),
     path('build-edit/<int:build_id>/', views.build_edit, name='build_edit'),
+    path('build-edit-name/<int:build_id>/', views.build_edit_name, name='build_edit_name'),
 
     # Categories
     path('categories/', views.categories, name='categories'),

@@ -6,3 +6,11 @@
 #total-price span {
     font-weight: bold;
 }
+
+#form-build-name {
+    margin-bottom: 30px;
+}
+
+#input-build-name {
+    margin-right: 20px;
+}
