@@ -73,7 +73,13 @@
         <tr>
           <td>{{ product.category.name }}</td>
           <td>{{ product.name }}</td>
-          <td class="text-right">&#8369; {{ product.price }}</td>
+          
+          {% if product.price == '--' %}
+            <td class="text-right">--</td>
+          {% else %}
+            <td class="text-right">&#8369; {{ product.price }}</td>          
+          {% endif %}
+          
           <td>
             <a href="{{ url('product_delete', args=(product.id,)) }}" >delete</a>
           </td>

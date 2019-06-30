@@ -122,7 +122,10 @@ def products(request):
     }
 
     for product in products:
-        product.price = format_as_currency(product.price)
+        if product.price == 0:
+            product.price = '--'
+        else:
+            product.price = format_as_currency(product.price)
 
     return render(request, PRODUCTS_HTML, context)
 
