@@ -1,84 +1,84 @@
 {% extends "base.html" %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ static('css/products.css') }}" >
-    <link rel="stylesheet" href="{{ static('css/build_edit.css') }}" >
+  <link rel="stylesheet" href="{{ static('css/products.css') }}" >
+  <link rel="stylesheet" href="{{ static('css/build_edit.css') }}" >
 {% endblock styles %}
 
 {% block content %}
 
-    <h1>Build: {{ build.name }}</h1>
+  <h1>Build: {{ build.name }}</h1>
 
-    <p>Add a product:</p>
+  <p>Add a product:</p>
 
-    <div class="row">
-        <div class="col-md-8">
-            <form action="{{ url('build_edit', args=(build.id,))}}" method="POST">
-                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-        
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="input-category">Category</label>
-                        </div>
-                        <select class="custom-select" id="input-category" name="category">
-                            <option selected>Choose...</option>
-                            {% for category in categories %}
-                                <option value="{{ category.id }}">{{ category.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group" id="form-text-box">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="input-product">Product</label>
-                        </div>
-                        <select class="custom-select" id="input-product" name="product">
-                            <option selected>Choose...</option>
-                        </select>
-                    </div>
-                </div>
-        
-                <button type="submit" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add</button>
-            </form>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
+  <div class="row">
+    <div class="col-md-8">
+      <form action="{{ url('build_edit', args=(build.id,))}}" method="POST">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     
-    <p id="total-price">Total Price: <span>&#8369; {{ total_price }}</span></p>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="input-category">Category</label>
+            </div>
+            <select class="custom-select" id="input-category" name="category">
+              <option selected>Choose...</option>
+              {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group" id="form-text-box">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="input-product">Product</label>
+            </div>
+            <select class="custom-select" id="input-product" name="product">
+              <option selected>Choose...</option>
+            </select>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add</button>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  
+  <p id="total-price">Total Price: <span>&#8369; {{ total_price }}</span></p>
 
-    <table class="table table-hover table-sm">
-        <thead>
-            <tr>
-                <th scope="col" id="col-category">Category</th>
-                <th scope="col" id="col-name">Name</th>
-                <th scope="col" id="col-price" class="price">Price</th>
-                <th scope="col" id="col-delete"></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for build_product in build_products %}
-                <tr>
-                    <td>{{ build_product.product.category.name }}</td>
-                    <td>{{ build_product.product.name }}</td>
-                    {% if build_product.product.price == '--'  %}
-                        <td class="price">--</td>
-                    {% else %}
-                        <td class="price">&#8369; {{ build_product.product.price }}</td>
-                    {% endif %}
-                    <td>
-                        <a href="{{ url('build_product_delete', args=(build_product.id,)) }}" >delete</a>
-                    </td>
-                </tr>
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col" id="col-category">Category</th>
+        <th scope="col" id="col-name">Name</th>
+        <th scope="col" id="col-price" class="price">Price</th>
+        <th scope="col" id="col-delete"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for build_product in build_products %}
+        <tr>
+          <td>{{ build_product.product.category.name }}</td>
+          <td>{{ build_product.product.name }}</td>
+          {% if build_product.product.price == '--'  %}
+            <td class="price">--</td>
+          {% else %}
+            <td class="price">&#8369; {{ build_product.product.price }}</td>
+          {% endif %}
+          <td>
+            <a href="{{ url('build_product_delete', args=(build_product.id,)) }}" >delete</a>
+          </td>
+        </tr>
 
-            {% endfor %}
-        </tbody>
-    </table>
+      {% endfor %}
+    </tbody>
+  </table>
 
 {% endblock %}
 
 {% block scripts %}
-    <script src="{{ static('js/build_edit.js') }}"></script>
+  <script src="{{ static('js/build_edit.js') }}"></script>
 {% endblock %}

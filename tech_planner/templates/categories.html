@@ -1,48 +1,48 @@
 {% extends "base.html" %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ static('css/categories.css') }}" >
+  <link rel="stylesheet" href="{{ static('css/categories.css') }}" >
 {% endblock styles %}
 
 {% block content %}
 
-    <h1>Categories</h1>
+  <h1>Categories</h1>
 
 
-    <form class="form-inline" action="{{ url('categories')}}" method="POST">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-        
-        <div class="form-group" id="form-text-box">
-            <input type="text" class="form-control" id="input-name" name="name" autocomplete="off" placeholder="Category Name" required autofocus>
-        </div>
-
-        <button type="submit" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add</button>
-    </form>
-
-    <div class="row">
-        <div class="col-md-6">
-            <table class="table table-hover table-sm">
-                <thead>
-                    <tr>
-                    <th scope="col" id="col-name">Name</th>
-                    <th scope="col" id="col-delete"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for category in categories %}
-                        <tr>
-                            <td>{{ category.name }}</td>
-                            <td>
-                                <a href="{{ url('category_delete', args=(category.id,)) }}" >delete</a>
-                            </td>
-                        </tr>
-        
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-6"></div>
+  <form class="form-inline" action="{{ url('categories')}}" method="POST">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    
+    <div class="form-group" id="form-text-box">
+      <input type="text" class="form-control" id="input-name" name="name" autocomplete="off" placeholder="Category Name" required autofocus>
     </div>
+
+    <button type="submit" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add</button>
+  </form>
+
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-hover table-sm">
+        <thead>
+          <tr>
+          <th scope="col" id="col-name">Name</th>
+          <th scope="col" id="col-delete"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for category in categories %}
+            <tr>
+              <td>{{ category.name }}</td>
+              <td>
+                <a href="{{ url('category_delete', args=(category.id,)) }}" >delete</a>
+              </td>
+            </tr>
+    
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
 
 
 {% endblock %}
