@@ -6,3 +6,7 @@
 #total-price span {
     font-weight: bold;
 }
+
+.price {
+    text-align: right;
+}
