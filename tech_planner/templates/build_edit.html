@@ -63,7 +63,11 @@
                 <tr>
                     <td>{{ build_product.product.category.name }}</td>
                     <td>{{ build_product.product.name }}</td>
-                    <td class="price">&#8369; {{ build_product.product.price }}</td>
+                    {% if build_product.product.price == '--'  %}
+                        <td class="price">--</td>
+                    {% else %}
+                        <td class="price">&#8369; {{ build_product.product.price }}</td>
+                    {% endif %}
                     <td>
                         <a href="{{ url('build_product_delete', args=(build_product.id,)) }}" >delete</a>
                     </td>

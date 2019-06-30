@@ -74,8 +74,13 @@ def build_edit(request, build_id):
     }
     
     for build_product in build_products:
-        build_product.product.price = format_as_currency(
-            build_product.product.price)
+        price = build_product.product.price
+
+        if price == 0:
+            build_product.product.price = '--'
+        else:
+            build_product.product.price = format_as_currency(
+                build_product.product.price)
 
     return render(request, BUILD_EDIT_HTML, context)
 
