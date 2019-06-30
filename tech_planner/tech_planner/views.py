@@ -61,6 +61,7 @@ def build_edit(request, build_id):
     categories = Category.objects.order_by('name')
     products = Product.objects.order_by('name')
     build_products = BuildProduct.objects.filter(build=build)
+    build_products = build_products.order_by('product__category__name', 'product__name')
 
     # Get total price
     total_price = sum([x.product.price for x in build_products])
@@ -109,7 +110,7 @@ def products(request):
 
         return HttpResponseRedirect(reverse(PRODUCTS_URL))
 
-    products = Product.objects.order_by('category', 'name')
+    products = Product.objects.order_by('category__name', 'name')
     categories = Category.objects.order_by('name')
 
     context = {
@@ -125,7 +126,7 @@ def products(request):
 
 def product_delete(request, product_id):
     Product.objects.filter(id=product_id).delete()
-    
+
     return HttpResponseRedirect(reverse(PRODUCTS_URL))
 
 
