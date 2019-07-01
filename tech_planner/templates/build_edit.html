@@ -68,7 +68,17 @@
     <div class="col-md-4"></div>
   </div>
   
-  <p id="total-price">Total Price: <span>&#8369; {{ total_price }}</span></p>
+  <table id="total-price-table">
+    <tr>
+      <td>Total cost when complete:</td>
+      <td class="text-right price">&#8369; {{ total_price }}</td>
+    </tr>
+    
+    <tr>
+      <td>Total cost currently:</td>
+      <td class="text-right price">&#8369; {{ current_price }}</td>
+    </tr>
+  </table>
 
   <table class="table table-hover table-sm">
     <thead>
@@ -92,9 +102,9 @@
           <td>{{ build_product.product.name }}</td>
 
           {% if build_product.product.price == '--'  %}
-            <td class="text-right">--</td>
+            <td class="text-right price">--</td>
           {% else %}
-            <td class="text-right">&#8369; {{ build_product.product.price }}</td>
+            <td class="text-right price">&#8369; {{ build_product.product.price }}</td>
           {% endif %}
 
           <td>

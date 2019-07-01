@@ -63,15 +63,20 @@ def build_edit(request, build_id):
     build_products = BuildProduct.objects.filter(build=build)
     build_products = build_products.order_by('product__category__name', 'product__name')
 
-    # Get total price
+    # Get total price when complete
     total_price = sum([x.product.price for x in build_products])
     total_price = format_as_currency(total_price)
+    
+    # Get total price currently
+    current_price = sum([x.product.price for x in build_products if x.status_code == 'BOUGHT'])
+    current_price = format_as_currency(current_price)
 
     context = {
         'build': build,
         'categories': categories,
         'build_products': build_products,
-        'total_price': total_price
+        'total_price': total_price,
+        'current_price': current_price
     }
     
     for build_product in build_products:

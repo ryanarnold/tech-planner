@@ -14,3 +14,11 @@
 #input-build-name {
     margin-right: 20px;
 }
+
+#total-price-table {
+    margin-top: 40px;
+}
+
+#total-price-table td {
+    padding: 8px;
+}
