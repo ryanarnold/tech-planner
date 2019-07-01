@@ -64,19 +64,24 @@ def build_edit(request, build_id):
     build_products = build_products.order_by('product__category__name', 'product__name')
 
     # Get total price when complete
-    total_price = sum([x.product.price for x in build_products])
-    total_price = format_as_currency(total_price)
+    total_price_num = sum([x.product.price for x in build_products])
+    total_price = format_as_currency(total_price_num)
     
     # Get total price currently
-    current_price = sum([x.product.price for x in build_products if x.status_code == 'BOUGHT'])
-    current_price = format_as_currency(current_price)
+    current_price_num = sum([x.product.price for x in build_products if x.status_code == 'BOUGHT'])
+    current_price = format_as_currency(current_price_num)
+
+    # Get cost balance
+    cost_balance_num = total_price_num - current_price_num
+    cost_balance = format_as_currency(cost_balance_num)
 
     context = {
         'build': build,
         'categories': categories,
         'build_products': build_products,
         'total_price': total_price,
-        'current_price': current_price
+        'current_price': current_price,
+        'cost_balance': cost_balance,
     }
     
     for build_product in build_products:
