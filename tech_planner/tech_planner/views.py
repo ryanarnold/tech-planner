@@ -18,6 +18,7 @@ PRODUCTS_URL = 'products'
 BUILDS_HTML = 'builds.html'
 BUILD_EDIT_HTML = 'build_edit.html'
 PRODUCTS_HTML = 'products.html'
+PRODUCT_EDIT_HTML = 'product_edit.html'
 CATEGORIES_HTML = 'categories.html'
 
 
@@ -140,6 +141,30 @@ def products(request):
             product.price = format_as_currency(product.price)
 
     return render(request, PRODUCTS_HTML, context)
+
+
+def product_edit(request, product_id):
+    product = Product.objects.get(id=product_id)
+
+    if request.method == HTTP_POST:
+        new_product_name = request.POST.get('name')
+        new_category = Category.objects.get(id=request.POST.get('category'))
+        new_price = request.POST.get('price')
+
+        product.name = new_product_name
+        product.category = new_category
+        product.price = new_price
+
+        product.save()
+
+    categories = Category.objects.order_by('name')
+
+    context = {
+        'product': product,
+        'categories': categories
+    }
+
+    return render(request, PRODUCT_EDIT_HTML, context)
 
 
 def product_delete(request, product_id):
