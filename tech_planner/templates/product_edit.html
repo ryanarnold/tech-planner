@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+
+{% block styles %}
+{% endblock styles %}
+
+
+{% block content %}
+
+  <h1 id="page-heading">{{ product.name }}</h1>
+
+  <p>Edit product details:</p>
+  <div class="row" id="form-product">
+    <div class="col-md-10">
+      <form action="{{ url('product_edit', args=(product.id,)) }}" method="POST">
+          <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+          <table class="form-table">
+            <tr>
+              <th class="table-col-25">
+                <label for="input-product-name">Product Name</label>
+              </th  >
+              <td>
+                  <input class="form-control" type="text" value="{{ product.name }}" name="name" id="input-product-name" autofocus>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                <label for="input-product-category">Category</label>
+              </th>
+              <td>
+                <select class="custom-select" id="input-product-category" name="category">
+
+                  {% for category in categories %}
+                    {% if product.category == category %}
+                      <option value="{{ category.id }}" selected>{{ category.name }}</option>
+                    {% else %}
+                      <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endif %}
+                  {% endfor %}
+    
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                <label for="input-product-price">Price</label>
+              </th>
+
+              <td>
+                <input class="form-control" type="number" value="{{ product.price }}" name="price" id="input-product-price">
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit" class="btn btn-outline-success">Save</button>
+                <a role="button" class="btn btn-outline-secondary" href="{{ url('products') }}">Cancel</a>
+              </td>
+            </tr>
+          </table>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
