@@ -157,6 +157,8 @@ def product_edit(request, product_id):
 
         product.save()
 
+        return HttpResponseRedirect(reverse('products'))
+
     categories = Category.objects.order_by('name')
 
     context = {
