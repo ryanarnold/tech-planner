@@ -73,7 +73,7 @@
   <table class="table table-hover table-sm">
     <thead>
       <tr>
-        <th class="table-col-10" scope="col" id="col-category">Category</th>
+        <th class="table-col-10 text-right" scope="col" id="col-category">Category</th>
         <th class="table-col-50" scope="col" id="col-name">Name</th>
         <th class="table-col-25 text-right" scope="col" id="col-price">Price</th>
         <th class="table-col-10" scope="col" id="col-delete"></th>
@@ -83,7 +83,7 @@
 
       {% for build_product in build_products %}
         <tr>
-          <td>{{ build_product.product.category.name }}</td>
+          <td class="text-right">{{ build_product.product.category.name }}</td>
           <td>{{ build_product.product.name }}</td>
 
           {% if build_product.product.price == '--'  %}
