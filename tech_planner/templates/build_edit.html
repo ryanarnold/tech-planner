@@ -93,11 +93,7 @@
     <tbody>
 
       {% for build_product in build_products %}
-        {% if build_product.status_code == 'BOUGHT' %}
-          <tr class="table-success">
-        {% else %}
-          <tr>
-        {% endif %}
+        <tr>
           <td class="text-right">{{ build_product.product.category.name }}</td>
           <td>{{ build_product.product.name }}</td>
 
