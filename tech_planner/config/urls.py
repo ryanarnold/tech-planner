@@ -27,6 +27,7 @@ urlpatterns = [
     path('build-product-delete/<int:build_product_id>/', views.build_product_delete, name='build_product_delete'),
     path('build-edit/<int:build_id>/', views.build_edit, name='build_edit'),
     path('build-edit-name/<int:build_id>/', views.build_edit_name, name='build_edit_name'),
+    path('update-build-product-status/<int:build_product_id>/<str:status>/', views.build_product_update_status, name='build_product_update_status'),
 
     # Categories
     path('categories/', views.categories, name='categories'),
