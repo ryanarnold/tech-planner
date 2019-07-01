@@ -98,6 +98,16 @@ def build_edit_name(request, build_id):
         return HttpResponseRedirect(reverse(BUILD_EDIT_URL, args=(build_id,)))
 
 
+def build_product_update_status(request, build_product_id, status):
+    build_product = BuildProduct.objects.get(id=build_product_id)
+    build_product.status_code = status
+    build_product.save()
+
+    print(build_product.status_code)
+
+    return HttpResponseRedirect(reverse(BUILD_EDIT_URL, args=(build_product.build.id,)))
+
+
 def build_product_delete(request, build_product_id):
     build_product = BuildProduct.objects.get(id=build_product_id)
     build_id = build_product.build.id
