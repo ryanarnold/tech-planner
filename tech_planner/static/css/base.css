@@ -45,3 +45,8 @@
 .form-table td {
     padding: 10px;
 }
+
+.price {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
