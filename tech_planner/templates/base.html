@@ -17,6 +17,9 @@
 
     {% block styles %}{% endblock %}
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4bfea31780.js"></script>
   </head>
@@ -24,39 +27,40 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <h1 id="app-heading">Tech Planner</h1>
+        <div class="col-md-2" id="nav-links-col">
+          <div class="row">
+            <div class="col-md-12" id="nav-links">
+              <a href="{{ url('builds') }}">builds</a>
+              <a href="{{ url('products') }}">products</a>
+              <a href="{{ url('categories') }}">categories</a>
+            </div>
+          </div>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-8" id="content-col">
+          {% block content %}
+          {% endblock content %}
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="col-md-2"></div>
       </div>
 
-      <div class="row" id="nav-links">
-        <div class="col-md-12">
-          <a href="{{ url('builds') }}">builds</a> / <a href="{{ url('products') }}">products</a> / <a href="{{ url('categories') }}">categories</a>
-        </div>
-      </div>
-
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
           
-          {% block content %}
-          {% endblock content %}
+          
 
         </div>
         <div class="col-md-2"></div>
-      </div>
+      </div> -->
       
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -6,7 +6,17 @@
 }
 
 #nav-links {
-    text-align: center;
+    padding-top: 20px;
+}
+
+#nav-links a {
+    display: block;
+    margin-top: 20px;
+    font-size: 28px;
+}
+
+#content-col {
+    padding-left: 40px;
 }
 
 #page-heading {
@@ -46,7 +56,31 @@
     padding: 10px;
 }
 
+/* Fonts */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#page-heading {
+    font-family: 'Roboto Mono';
+}
+
 .price {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+    font-family: 'Roboto Mono';
+}
+
+/* Colors */
+
+#nav-links-col {
+    background-color: #212121;
+}
+
+#nav-links a, #nav-links a:visited {
+    color: white;
+}
+
+#nav-links a:hover {
+    text-decoration: underline;
+    text-decoration-color: #14ffec;
 }
