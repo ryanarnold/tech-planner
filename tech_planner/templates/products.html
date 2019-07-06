@@ -85,7 +85,7 @@
           {% endif %}
           
           <td>
-            <a href="{{ url('product_delete', args=(product.id,)) }}" >delete</a>
+            <a href="{{ url('product_delete', args=(product.id,)) }}" class="text-link-delete">delete</a>
           </td>
         </tr>
       {% endfor %}

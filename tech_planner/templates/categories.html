@@ -35,7 +35,7 @@
             <tr>
               <td>{{ category.name }}</td>
               <td>
-                <a href="{{ url('category_delete', args=(category.id,)) }}" >delete</a>
+                <a href="{{ url('category_delete', args=(category.id,)) }}" class="text-link-delete">delete</a>
               </td>
             </tr>
           {% endfor %}
