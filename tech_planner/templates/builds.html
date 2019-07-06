@@ -16,17 +16,26 @@
     <div class="col-md-8">
       <form action="{{ url('builds')}}" method="POST">
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+        <table class="form-table">
+          <tr>
+            <td class="table-col-25">
+              <label for="input-name">Build Name</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="input-name" name="name" autocomplete="off" required autofocus>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <button type="submit" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add</button>
+            </td>
+          </tr>
+        </table>
         
-        <div class="form-group" id="form-text-box">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="input-name">Build Name</label>
-            </div>
-            <input type="text" class="form-control" id="input-name" name="name" autocomplete="off" required autofocus>
-          </div>
-        </div>
     
-        <button type="submit" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add</button>
       </form>
     </div>
     <div class="col-md-4"></div>
