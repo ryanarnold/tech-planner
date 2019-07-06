@@ -71,9 +71,9 @@
 
       {% for product in products %}
         <tr>
-          <td class="text-right">{{ product.category.name }}</td>
+          <td class="text-right text-light-color">{{ product.category.name }}</td>
           <td>
-            <a href="{{ url('product_edit', args=(product.id,)) }}">
+            <a href="{{ url('product_edit', args=(product.id,)) }}" class="item-link">
               {{ product.name }}
             </a>
           </td>

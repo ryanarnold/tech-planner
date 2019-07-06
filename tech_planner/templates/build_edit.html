@@ -70,17 +70,17 @@
   
   <table id="total-price-table">
     <tr>
-      <td>Total cost when complete:</td>
+      <td class="text-light-color">Total cost when complete:</td>
       <td class="text-right price">&#8369; {{ total_price }}</td>
     </tr>
     
     <tr>
-      <td>Total cost currently:</td>
+      <td class="text-light-color">Total cost currently:</td>
       <td class="text-right price">&#8369; {{ current_price }}</td>
     </tr>
 
     <tr>
-      <td>Total cost to complete:</td>
+      <td class="text-light-color">Total cost to complete:</td>
       <td class="text-right price">&#8369; {{ cost_balance }}</td>
     </tr>
   </table>
@@ -99,7 +99,7 @@
 
       {% for build_product in build_products %}
         <tr>
-          <td class="text-right">{{ build_product.product.category.name }}</td>
+          <td class="text-right text-light-color">{{ build_product.product.category.name }}</td>
           <td>{{ build_product.product.name }}</td>
 
           {% if build_product.product.price == '--'  %}

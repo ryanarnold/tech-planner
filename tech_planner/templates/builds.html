@@ -46,7 +46,7 @@
           {% for build in builds %}
             <tr>
               <td>
-                <a href="{{ url('build_edit', args=(build.id,)) }}">{{ build.name }}</a>
+                <a href="{{ url('build_edit', args=(build.id,)) }}" class="item-link">{{ build.name }}</a>
               </td>
               <td>
                 <a href="{{ url('build_delete', args=(build.id,)) }}" >delete</a>

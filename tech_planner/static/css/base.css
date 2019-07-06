@@ -72,6 +72,33 @@ body {
 
 /* Colors */
 
+#content-col {
+    background-color: #323232;
+    color: #e8e8e8;
+}
+
+.text-light-color {
+    color: #7a7a7a;
+    font-weight: 100;
+}
+
+thead {
+    color: #7a7a7a;
+    font-weight: 100;
+}
+
+.price {
+    color: #a3faff;
+}
+
+.item-link, .item-link:visited, .item-link:hover {
+    color: #e8e8e8;
+}
+
+#filler-col {
+    background-color: #323232;
+}
+
 #nav-links-col {
     background-color: #212121;
 }
@@ -83,4 +110,31 @@ body {
 #nav-links a:hover {
     text-decoration: underline;
     text-decoration-color: #14ffec;
+}
+
+#page-heading {
+    
+    color: #a3faff;
+}
+
+.btn-outline-success {
+    color: #a3faff;
+    border-color: #a3faff;
+}
+
+.form-control, .form-control:focus {
+    background-color: #4f4f4f;
+    color: #e8e8e8;
+    border: 0;
+}
+
+option {
+    background-color: #4f4f4f;
+    color: #e8e8e8;
+}
+
+.custom-select {
+    background-color: #4f4f4f;
+    color: #e8e8e8;
+    border: 0;
 }
