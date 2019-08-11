@@ -42,12 +42,13 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <table class="table table-hover table-sm">
         <thead>
           <tr>
-            <th class="table-col-100" scope="col">Name</th>
-            <th class="table-col-10" scope="col"></th>
+            <th class="table-col-50" scope="col">Name</th>
+            <th class="table-col-25" scope="col">Price</th>
+            <th class="table-col-25" scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +57,9 @@
             <tr>
               <td>
                 <a href="{{ url('build_edit', args=(build.id,)) }}" class="item-link">{{ build.name }}</a>
+              </td>
+              <td>
+                <span class="text-right price">&#8369; {{ build.total_price }}</span>
               </td>
               <td>
                 <a href="{{ url('build_delete', args=(build.id,)) }}" class="text-link-delete">delete</a>

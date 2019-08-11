@@ -38,6 +38,15 @@ def builds(request):
     
     builds = Build.objects.order_by('name')
 
+    for build in builds:
+        build_total_price_num = 0
+        build_products = BuildProduct.objects.filter(build=build)
+        
+        for build_product in build_products:
+            build_total_price_num += build_product.product.price
+        
+        build.total_price = format_as_currency(build_total_price_num)
+
     context = {
         'builds': builds
     }
