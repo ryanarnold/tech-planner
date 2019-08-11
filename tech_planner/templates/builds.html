@@ -58,9 +58,7 @@
               <td>
                 <a href="{{ url('build_edit', args=(build.id,)) }}" class="item-link">{{ build.name }}</a>
               </td>
-              <td>
-                <span class="text-right price">&#8369; {{ build.total_price }}</span>
-              </td>
+              <td class="text-right price">&#8369; {{ build.total_price }}</td>
               <td>
                 <a href="{{ url('build_delete', args=(build.id,)) }}" class="text-link-delete">delete</a>
               </td>
